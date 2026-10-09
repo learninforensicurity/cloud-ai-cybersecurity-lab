@@ -28,7 +28,7 @@ Cloud AI Cybersecurity Lab — Windows Evidence Collection
 UTC timestamp: $((Get-Date).ToUniversalTime().ToString("o"))
 Evidence directory: $Out
 
-This bundle is for the Windows development host. Review every file before committing it.
+Review every file before committing it.
 "@ | Set-Content (Join-Path $Out "00-summary.txt")
 
 Write-Host "Evidence collection complete: $Out"

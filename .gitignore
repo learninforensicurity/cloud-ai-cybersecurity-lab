@@ -1,0 +1,76 @@
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Credentials and keys
+*.key
+*.pem
+*.p12
+*.pfx
+*.ppk
+secrets/
+credentials/
+secrets.json
+credentials.json
+
+# OpenClaw local data
+.openclaw/
+openclaw.json
+auth/
+tokens/
+
+# Cloud credentials
+gcloud-credentials.json
+service-account*.json
+*-credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Docker
+docker-compose.override.yml
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code local settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Private evidence
+evidence/private/
+evidence/raw/
+
+# Build / generated files
+dist/
+build/
+out/

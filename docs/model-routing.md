@@ -25,7 +25,7 @@ The tested routing order is:
 | Priority | Model | Role |
 |---:|---|---|
 | 1 | `openrouter/free` | Primary free routing |
-| 2 | `google/gemini-3.5-flash-lite` | Fallback |
+| 2 | `google/gemini-3.5-flash-lite | Fallback |
 | 3 | `opencode/big-pickle` | Fallback |
 | 4 | `opencode/longcat-2.5-preview-free` | Fallback |
 | 5 | `opencode/mimo-v2.6-flash-free` | Fallback |

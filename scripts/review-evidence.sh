@@ -22,6 +22,8 @@ sed -i -E 's#Evidence directory: .*#Evidence directory: [redacted for portfolio]
 
 # Redact the Linux home path from OpenClaw process evidence.
 sed -i -E 's#/home/[^ /]+#[redacted-home]#g' "$OUT/02-openclaw.txt"
+# Redact Docker bridge addresses from OpenClaw evidence.
+sed -i -E 's/172\.[0-9]+\.[0-9]+\.[0-9]+/[redacted-address]/g' "$OUT/02-openclaw.txt"
 
 # Redact the published Open WebUI address while preserving the validation result.
 sed -i -E 's/Published endpoint: [^[:space:]]+/Published endpoint: [redacted]/' "$OUT/04-labs.txt"

@@ -27,7 +27,7 @@ sed -i -E 's#/home/[^ /]+#[redacted-home]#g' "$OUT/02-openclaw.txt"
 sed -i -E 's/Published endpoint: [^[:space:]]+/Published endpoint: [redacted]/' "$OUT/04-labs.txt"
 
 # Redact the published Open WebUI host address from Docker evidence.
-sed -i -E 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:3000:8080/[redacted]:3000:8080/g' "$OUT/03-docker.txt"
+sed -i -E 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:3000->[0-9]+/[redacted]:3000->8080/g' "$OUT/03-docker.txt"
 
 # Replace the full project listener table with only ports needed to demonstrate the lab.
 cat > "$OUT/07-listeners.txt" <<'EOF'

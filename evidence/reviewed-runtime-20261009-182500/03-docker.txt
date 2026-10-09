@@ -1,0 +1,19 @@
+=== Command: bash -lc 
+echo "--- Docker server ---"
+docker version --format "{{.Server.Version}}" 2>/dev/null || docker version
+echo
+echo "--- Project containers ---"
+docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}" |
+grep -E "^(NAMES|vsftpd-lab|webgoat|juice-shop|open-webui)[[:space:]]" || true
+ ===
+=== UTC: 2026-10-09T18:25:00+00:00 ===
+--- Docker server ---
+29.8.2
+
+--- Project containers ---
+NAMES            IMAGE                                STATUS                    PORTS
+vsftpd-lab       clintmint/vsftpd-2.3.4:1.0           Up 6 hours                127.0.0.1:6200->6200/tcp, 127.0.0.1:2121->21/tcp
+webgoat          webgoat/webgoat:latest               Up 29 hours (unhealthy)   127.0.0.1:8080->8080/tcp, 9090/tcp
+juice-shop       bkimminich/juice-shop:latest         Up 29 hours               127.0.0.1:3001->3000/tcp
+open-webui       ghcr.io/open-webui/open-webui:main   Up 29 hours (healthy)     [redacted]:3000->8080/tcp
+

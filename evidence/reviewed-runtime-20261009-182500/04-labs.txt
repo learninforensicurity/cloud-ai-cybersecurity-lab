@@ -1,0 +1,58 @@
+=== Command: bash -lc 
+echo "--- Lab containers ---"
+docker ps -a --filter name=webgoat --filter name=juice-shop --filter name=vsftpd-lab \
+  --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+
+echo
+echo "--- WebGoat host HTTP check ---"
+curl -fsS -o /dev/null -w "HTTP %{http_code}\n" --max-time 5 http://127.0.0.1:8080/ || true
+
+echo
+echo "--- Juice Shop host HTTP check ---"
+curl -fsS -o /dev/null -w "HTTP %{http_code}\n" --max-time 5 http://127.0.0.1:3001/ || true
+
+echo
+echo "--- Open WebUI published endpoint check ---"
+WEBUI_ENDPOINT="$(docker port open-webui 8080/tcp 2>/dev/null | head -n 1 | sed "s/ -> /:/")"
+if [ -n "$WEBUI_ENDPOINT" ]; then
+  echo "Published endpoint: [redacted]
+  curl -fsS -o /dev/null -w "HTTP %{http_code}\n" --max-time 5 "http://$WEBUI_ENDPOINT/" || true
+else
+  echo "Published endpoint: [redacted] detected"
+fi
+
+echo
+echo "--- VSFTPD listeners ---"
+ss -lnt 2>/dev/null | grep -E "127\.0\.0\.1:(2121|6200)" || true
+
+echo
+echo "--- VSFTPD TCP checks ---"
+nc -vz -w 2 127.0.0.1 2121 || true
+nc -vz -w 2 127.0.0.1 6200 || true
+ ===
+=== UTC: 2026-10-09T18:25:00+00:00 ===
+--- Lab containers ---
+NAMES        IMAGE                          STATUS                    PORTS
+vsftpd-lab   clintmint/vsftpd-2.3.4:1.0     Up 6 hours                127.0.0.1:6200->6200/tcp, 127.0.0.1:2121->21/tcp
+webgoat      webgoat/webgoat:latest         Up 29 hours (unhealthy)   127.0.0.1:8080->8080/tcp, 9090/tcp
+juice-shop   bkimminich/juice-shop:latest   Up 29 hours               127.0.0.1:3001->3000/tcp
+
+--- WebGoat host HTTP check ---
+curl: (22) The requested URL returned error: 404
+HTTP 404
+
+--- Juice Shop host HTTP check ---
+HTTP 200
+
+--- Open WebUI published endpoint check ---
+Published endpoint: [redacted]
+HTTP 200
+
+--- VSFTPD listeners ---
+LISTEN 0      4096                     127.0.0.1:6200       0.0.0.0:*   
+LISTEN 0      4096                     127.0.0.1:2121       0.0.0.0:*   
+
+--- VSFTPD TCP checks ---
+Connection to 127.0.0.1 2121 port [tcp/iprop] succeeded!
+Connection to 127.0.0.1 6200 port [tcp/*] succeeded!
+

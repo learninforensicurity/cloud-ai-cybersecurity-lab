@@ -1,0 +1,24 @@
+=== Command: bash -lc 
+echo "--- Version ---"
+command -v openclaw || true
+openclaw --version 2>&1 || true
+echo
+echo "--- Gateway process ---"
+pgrep -af "openclaw.*gateway" || true
+echo
+echo "--- Gateway listeners ---"
+ss -lntp 2>/dev/null | grep -E "127\.0\.0\.1:18789|172\.17\.0\.1:18789" || true
+ ===
+=== UTC: 2026-10-09T18:25:00+00:00 ===
+--- Version ---
+[redacted-home]/.npm-global/bin/openclaw
+OpenClaw 2026.9.9 (bcfc888)
+
+--- Gateway process ---
+454713 /usr/bin/node --max-old-space-size=3972 [redacted-home]/.npm-global/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+581806 bash -lc  echo "--- Version ---" command -v openclaw || true openclaw --version 2>&1 || true echo echo "--- Gateway process ---" pgrep -af "openclaw.*gateway" || true echo echo "--- Gateway listeners ---" ss -lntp 2>/dev/null | grep -E "127\.0\.0\.1:18789|172\.17\.0\.1:18789" || true 
+
+--- Gateway listeners ---
+LISTEN 0      511                     [redacted-address]:18789      0.0.0.0:*    users:(("MainThread",pid=454713,fd=83))
+LISTEN 0      511                      127.0.0.1:18789      0.0.0.0:*    users:(("MainThread",pid=454713,fd=82))
+

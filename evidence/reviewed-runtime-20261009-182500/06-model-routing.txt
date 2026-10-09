@@ -1,0 +1,14 @@
+=== Command: bash -lc 
+echo "--- Documented model routing identifiers ---"
+grep -RhoE "(openrouter/free|google/gemini-3\.5-flash-lite|opencode/[a-zA-Z0-9._-]+-free|opencode/big-pickle)" "$BASE_DIR/configs" "$BASE_DIR/docs" 2>/dev/null | sort -u
+ ===
+=== UTC: 2026-10-09T18:25:03+00:00 ===
+--- Documented model routing identifiers ---
+google/gemini-3.5-flash-lite
+opencode/big-pickle
+opencode/longcat-2.5-preview-free
+opencode/mimo-v2.6-flash-free
+opencode/nemotron-3.5-lightning-free
+opencode/space-bunny-free
+openrouter/free
+

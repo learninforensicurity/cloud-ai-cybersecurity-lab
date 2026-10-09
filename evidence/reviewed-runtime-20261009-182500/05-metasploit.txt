@@ -1,0 +1,7 @@
+=== Command: bash -lc command -v msfconsole; msfconsole --version 2>&1 | head -n 5 ===
+=== UTC: 2026-10-09T18:25:01+00:00 ===
+/usr/bin/msfconsole
+This copy of metasploit-framework is more than two weeks old.
+ Consider running 'msfupdate' to update to the latest version.
+Framework Version: 6.5.3-dev-
+

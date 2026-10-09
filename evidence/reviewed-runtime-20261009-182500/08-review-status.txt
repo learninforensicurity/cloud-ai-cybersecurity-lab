@@ -1,0 +1,19 @@
+Cloud AI Cybersecurity Lab — Phase 5 Evidence Review
+
+Evidence status:
+- GCP host: PASS
+- OpenClaw gateway: PASS
+- Docker: PASS
+- Juice Shop HTTP: PASS
+- Open WebUI HTTP: PASS
+- VSFTPD TCP connectivity: PASS
+- Metasploit availability: PASS
+- Model routing identifiers: PASS
+- WebGoat: RUNNING / ROOT ENDPOINT VALIDATION PENDING
+
+WebGoat returned HTTP 404 for the tested root path. This does not by itself prove that WebGoat is unavailable, so the portfolio evidence does not claim a WebGoat PASS.
+
+The reviewed evidence is intended for repository publication. It excludes host addresses, unrelated listener details, and the Linux home path.
+
+No exploit success is claimed.
+

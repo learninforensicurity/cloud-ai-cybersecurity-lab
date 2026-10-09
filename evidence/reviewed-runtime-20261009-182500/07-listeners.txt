@@ -1,0 +1,11 @@
+Cloud AI Cybersecurity Lab — Reviewed Project Listeners
+
+This reviewed evidence intentionally omits unrelated listeners and host addresses.
+
+Relevant listeners observed during validation:
+- OpenClaw gateway: 18789 (localhost/container bridge)
+- WebGoat: 8080 (localhost)
+- Juice Shop: 3001 (localhost)
+- VSFTPD lab: 2121 and 6200 (localhost)
+
+See 02-openclaw.txt and 04-labs.txt for the corresponding validation results.
